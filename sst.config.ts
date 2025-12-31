@@ -21,7 +21,7 @@ export default $config({
 
     const web = new sst.aws.Nextjs("blurbbles-nextjs", {
       server: {
-        architecture: 'arm64',
+        architecture: 'x86_64',
         timeout: '10 minutes'
       },
       domain: {
