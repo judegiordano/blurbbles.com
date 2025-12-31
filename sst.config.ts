@@ -20,6 +20,9 @@ export default $config({
     }
 
     const web = new sst.aws.Nextjs("blurbbles-nextjs", {
+      server: {
+        architecture: 'arm64'
+      },
       domain: {
         name: domain,
         redirects: [`www.${domain}`]

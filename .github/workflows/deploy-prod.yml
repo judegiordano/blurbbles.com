@@ -16,6 +16,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - uses: pguyot/arm-runner-action@v2
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
