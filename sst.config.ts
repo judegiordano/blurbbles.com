@@ -20,10 +20,6 @@ export default $config({
     }
 
     const web = new sst.aws.Nextjs("blurbbles-nextjs", {
-      server: {
-        architecture: 'x86_64',
-        timeout: '10 minutes'
-      },
       domain: {
         name: domain,
         redirects: [`www.${domain}`]
