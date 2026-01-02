@@ -1,4 +1,5 @@
-import { IPrompt } from '@/types/prompt';
+import { Countdown } from '@/components/Countdown';
+import { type IPrompt } from '@/types/prompt';
 
 export default async function Home() {
   const response = await fetch('https://api.blurbbles.com/prompts/daily', { next: { revalidate: 60 } })
@@ -13,6 +14,9 @@ export default async function Home() {
             </div>
             <div className='fade-in-up'>
               <div className='pt-5'>{prompt.prompt}</div>
+            </div>
+            <div className='fade-in-up-slow'>
+              <Countdown />
             </div>
           </div>
         )
