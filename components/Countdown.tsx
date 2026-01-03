@@ -33,19 +33,19 @@ export function Countdown() {
 
     return (
         <div className="grid grid-flow-col gap-5 text-center auto-cols-max">
-            <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
+            <div className="flex flex-col p-2 bg-neutral rounded-[10px] text-neutral-content">
                 <span className="countdown font-mono text-2xl">
                     <span style={{ "--value": time.hours, "--digits": 2 } as React.CSSProperties} aria-live="polite">{time.hours}</span>
                 </span>
                 hours
             </div>
-            <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
+            <div className="flex flex-col p-2 bg-neutral rounded-[10px] text-neutral-content">
                 <span className="countdown font-mono text-2xl">
                     <span style={{ "--value": time.minutes, "--digits": 2 } as React.CSSProperties} aria-live="polite">{time.minutes}</span>
                 </span>
                 min
             </div>
-            <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
+            <div className="flex flex-col p-2 bg-neutral rounded-[10px] text-neutral-content">
                 <span className="countdown font-mono text-2xl">
                     <span style={{ "--value": time.seconds, "--digits": 2 } as React.CSSProperties} aria-live="polite">{time.seconds}</span>
                 </span>
