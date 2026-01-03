@@ -2,11 +2,14 @@
 import { useEffect, useState } from 'react'
 
 export function Countdown() {
-    const [time, setTime] = useState<string>('00:00:00')
+    const [time, setTime] = useState({ hours: 0o0, minutes: 0o0, seconds: 0o0 })
 
     useEffect(() => {
         const updateCountdown = () => {
             const now = new Date()
+
+            const msUntilNextSecond = 1000 - now.getUTCMilliseconds()
+
             const utcHours = now.getUTCHours()
             const utcMinutes = now.getUTCMinutes()
             const utcSeconds = now.getUTCSeconds()
@@ -17,17 +20,37 @@ export function Countdown() {
 
             const hours = Math.floor(secondsRemaining / 3600)
             const minutes = Math.floor((secondsRemaining % 3600) / 60)
-            const seconds = secondsRemaining % 60
+            const seconds = Math.floor(secondsRemaining % 60)
 
-            const formatted = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
-            setTime(formatted)
+            setTime({ hours, minutes, seconds })
+            const nextTimeout = setTimeout(updateCountdown, msUntilNextSecond)
+            return () => clearTimeout(nextTimeout)
         }
 
-        updateCountdown()
-        const interval = setInterval(updateCountdown, 1000)
-
-        return () => clearInterval(interval)
+        const cleanup = updateCountdown()
+        return cleanup
     }, [])
 
-    return <div>{time}</div>
+    return (
+        <div className="grid grid-flow-col gap-5 text-center auto-cols-max">
+            <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
+                <span className="countdown font-mono text-2xl">
+                    <span style={{ "--value": time.hours, "--digits": 2 } as React.CSSProperties} aria-live="polite">{time.hours}</span>
+                </span>
+                hours
+            </div>
+            <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
+                <span className="countdown font-mono text-2xl">
+                    <span style={{ "--value": time.minutes, "--digits": 2 } as React.CSSProperties} aria-live="polite">{time.minutes}</span>
+                </span>
+                min
+            </div>
+            <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
+                <span className="countdown font-mono text-2xl">
+                    <span style={{ "--value": time.seconds, "--digits": 2 } as React.CSSProperties} aria-live="polite">{time.seconds}</span>
+                </span>
+                sec
+            </div>
+        </div>
+    )
 }

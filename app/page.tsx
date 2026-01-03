@@ -15,7 +15,7 @@ export default async function Home() {
             <div className='fade-in-up'>
               <div className='pt-5'>{prompt.prompt}</div>
             </div>
-            <div className='fade-in-up-slow'>
+            <div className='fade-in-up-slow pt-2'>
               <Countdown />
             </div>
           </div>
