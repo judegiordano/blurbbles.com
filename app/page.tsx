@@ -13,9 +13,10 @@ export default async function Home() {
               <div className='capitalize italic text-3xl'>{prompt.genre.split('_').join(' ').toLocaleLowerCase()}</div>
             </div>
             <div className='fade-in-up font-bold text-xl'>
-              <div className='pt-5'>{prompt.prompt}</div>
+              <div className='pt-5'>&quot;{prompt.prompt}&quot;</div>
+              <div className="divider" />
             </div>
-            <div className='fade-in-up-slow pt-5'>
+            <div className='fade-in-up-slow'>
               <Countdown />
             </div>
           </div>
